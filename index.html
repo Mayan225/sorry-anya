@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sorry Anya ❤️</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ffd6e7, #ffeef5, #ffd1dc);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 35px 25px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        color: #ff4f81;
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        color: #ff4f81;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #555;
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .emoji {
+        font-size: 65px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        border: none;
+        padding: 13px 24px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 8px;
+        transition: 0.3s;
+    }
+
+    .next {
+        background: #ff5c8a;
+        color: white;
+    }
+
+    .next:hover {
+        transform: scale(1.08);
+        background: #ff3d73;
+    }
+
+    .yes {
+        background: #ff4f81;
+        color: white;
+    }
+
+    .no {
+        background: #555;
+        color: white;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #message {
+        margin-top: 15px;
+        color: #ff4f81;
+        font-weight: bold;
+        min-height: 25px;
+    }
+
+    .heart {
+        position: absolute;
+        bottom: -30px;
+        font-size: 25px;
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .shake {
+        animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-8px); }
+        50% { transform: translateX(8px); }
+        75% { transform: translateX(-8px); }
+        100% { transform: translateX(0); }
+    }
+
+    .big-heart {
+        font-size: 90px;
+        animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+        50% {
+            transform: scale(1.15);
+        }
+    }
+
+    .signature {
+        margin-top: 20px;
+        color: #ff4f81;
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+<div class="heart" style="left:25%; animation-delay:2s;">💗</div>
+<div class="heart" style="left:45%; animation-delay:4s;">💕</div>
+<div class="heart" style="left:65%; animation-delay:1s;">💖</div>
+<div class="heart" style="left:85%; animation-delay:3s;">❤️</div>
+
+
+<div class="container" id="card">
+
+    <!-- PAGE 1 -->
+    <div id="page1">
+        <div class="emoji">🥺</div>
+
+        <h1>Anya...</h1>
+
+        <p>
+            I know I made a mistake.<br>
+            And honestly, I know I hurt you.
+        </p>
+
+        <button class="next" onclick="nextPage(2)">
+            I have something to say 💌
+        </button>
+    </div>
+
+
+    <!-- PAGE 2 -->
+    <div id="page2" class="hidden">
+
+        <div class="emoji">😔</div>
+
+        <h2>I'm Sorry, Anya.</h2>
+
+        <p>
+            I don't want to make excuses for what happened.
+            I know my mistake hurt you, and I'm genuinely sorry.
+        </p>
+
+        <p>
+            I can't change what happened,
+            but I can learn from it and try to do better.
+        </p>
+
+        <button class="next" onclick="nextPage(3)">
+            One more thing... 👉
+        </button>
+
+    </div>
+
+
+    <!-- PAGE 3 -->
+    <div id="page3" class="hidden">
+
+        <div class="emoji">😈</div>
+
+        <h2>Okay... serious part over.</h2>
+
+        <p>
+            Before you decide whether to forgive
+            this idiot named <b>Mayank</b>...
+        </p>
+
+        <p>
+            You have to answer one very important question.
+        </p>
+
+        <button class="next" onclick="nextPage(4)">
+            What question? 🤨
+        </button>
+
+    </div>
+
+
+    <!-- PAGE 4 -->
+    <div id="page4" class="hidden">
+
+        <div class="emoji">🥹</div>
+
+        <h2>Will you forgive me?</h2>
+
+        <button class="yes" onclick="forgive()">
+            Yes ❤️
+        </button>
+
+        <button class="no" id="noButton"
+                onmouseover="moveButton()"
+                onclick="noClick()">
+            Nope 😤
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+
+    <!-- FINAL PAGE -->
+    <div id="page5" class="hidden">
+
+        <div class="big-heart">❤️</div>
+
+        <h1>Thank You, Anya 🥹</h1>
+
+        <p>
+            I know saying sorry doesn't magically fix everything.
+        </p>
+
+        <p>
+            But I really am sorry for hurting you.
+            You matter to me, and I'll try to learn from my mistake
+            instead of repeating it.
+        </p>
+
+        <p>
+            No excuses.<br>
+            Just a genuine sorry. ❤️
+        </p>
+
+        <div class="signature">
+            — Mayank
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function nextPage(pageNumber) {
+
+        // Hide all pages
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById("page" + i)
+                .classList.add("hidden");
+        }
+
+        // Show selected page
+        document.getElementById("page" + pageNumber)
+            .classList.remove("hidden");
+    }
+
+
+    let noMessages = [
+        "Are you sure? 🥺",
+        "Anya please 😭",
+        "Think again... 👀",
+        "That button is getting suspicious 😭",
+        "You really chose NO? 💀",
+        "Okay okay... I'll keep asking 😤",
+        "Mayank is requesting reconsideration 🥹",
+        "Last chance... maybe? 👉👈"
+    ];
+
+    let messageIndex = 0;
+
+
+    function noClick() {
+
+        let message = document.getElementById("message");
+
+        message.innerText =
+            noMessages[messageIndex % noMessages.length];
+
+        messageIndex++;
+
+        document.getElementById("card")
+            .classList.add("shake");
+
+        setTimeout(() => {
+            document.getElementById("card")
+                .classList.remove("shake");
+        }, 400);
+    }
+
+
+    function moveButton() {
+
+        const button = document.getElementById("noButton");
+
+        // Random movement
+        const x = Math.random() * 180 - 90;
+        const y = Math.random() * 100 - 50;
+
+        button.style.transform =
+            `translate(${x}px, ${y}px)`;
+    }
+
+
+    function forgive() {
+
+        nextPage(5);
+
+        createHearts();
+    }
+
+
+    function createHearts() {
+
+        for (let i = 0; i < 30; i++) {
+
+            let heart = document.createElement("div");
+
+            heart.innerHTML = "❤️";
+
+            heart.style.position = "absolute";
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.bottom = "-30px";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animation =
+                "float " +
+                (3 + Math.random() * 4) +
+                "s linear";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+    }
+
+</script>
+
+</body>
+</html>
